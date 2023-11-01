@@ -1,11 +1,11 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/vars.scss';
+
 .categories {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  @include flexColumn();
 
   &__title {
-    margin-bottom: 30px;
+    margin-bottom: $titleMargin;
   }
 }

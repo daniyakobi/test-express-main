@@ -1,40 +1,29 @@
 import axios from "axios";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAppDispatch } from "../../../redux";
 import { setCategoriesData, setLoad } from "../../../redux/reducer";
 
+const API_CATEGORIES_URL = 'https://express-shina.ru/vacancy/catalog';
+
 export const useFetchCategories = () => {
   const dispatch = useAppDispatch();
-  const [loading, setLoading] = useState(false);
-  const [categories, setCategories] = useState([]);
-
-  useLayoutEffect(() => {
-    dispatch(setLoad(loading));
-  }, [dispatch, loading]);
-
-  useLayoutEffect(() => {
-    dispatch(setCategoriesData(categories));
-  }, [categories, dispatch]);
 
   useEffect(() => {
     try {
-      setLoading(true);
-  
-      const apiCategoriesUrl = 'https://express-shina.ru/vacancy/catalog';
-  
-      axios.get(apiCategoriesUrl).then((response) => {
+      dispatch(setLoad(true));  
+      axios.get(API_CATEGORIES_URL).then((response) => {
         const data = response.data.categories;
   
         if (data) {
-          setCategories(data);
-          setLoading(false);
+          dispatch(setCategoriesData(data));
+          dispatch(setLoad(false));
         }
       });
   
     } catch (error) {
       console.log({ error });
     } finally {
-      setLoading(false);
+      dispatch(setLoad(false));
     }
-  }, []);
+  }, [dispatch]);
 }

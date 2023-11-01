@@ -1,4 +1,4 @@
-import { expandCategories } from "../utils/utils";
+import { expandCategories } from "../utils/expandCategories";
 import { IInitialState } from "./state";
 
 export const APP_STORE_KEY = 'appKey';

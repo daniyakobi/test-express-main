@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { getCategoryBySlug } from '../../redux/selectors';
 import { IInitialState } from '../../redux/state';
-import { Back } from '../../components/Back/Back';
+import { Back } from '../../shared-components/Back/Back';
 
 import styles from './Subcategory.module.scss';
 import { CategoriesList } from '../categories/components/CategoriesList/CategoriesList';
